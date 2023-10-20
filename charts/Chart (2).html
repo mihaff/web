@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link  id='GoogleFontsLink' href='https://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet' type='text/css'><link  id='GoogleFontsLink' href='https://fonts.googleapis.com/css?family=Monofett' rel='stylesheet' type='text/css'>
+		<script>
+ WebFontConfig = {
+ google: 
+{families: ["Open Sans","Monofett",]},active: function() { 
+ DrawTheChart(ChartData,ChartOptions,"chart-01","bar")}
+};
+		</script>
+		<script asyn src="js/webfont.js">
+		</script><script src="js/Chart.min.js"></script>
+		<script>
+function DrawTheChart(ChartData,ChartOptions,ChartId,ChartType){
+eval('var myLine = new Chart(document.getElementById(ChartId).getContext("2d"),{type:"'+ChartType+'",data:ChartData,options:ChartOptions});document.getElementById(ChartId).getContext("2d").stroke();')
+}
+		</script>
+	</head>
+	<body>
+		<canvas  id="chart-01" width="700" height="400"  style="background-color:rgba(255,255,255,1.00);margin:0 auto;border-radius:0px;width:700px;height:400px;padding-left:0px;padding-right:0px;padding-top:0px;padding-bottom:0px"></canvas>
+		<script> function MoreChartOptions(){} 
+var ChartData = {
+	labels : ["2021","2022","2023",],
+	datasets : [
+		{
+		data : [389,467,588,],
+		backgroundColor :'#7633b0',
+		borderColor : 'rgba(136,136,136,0)',
+		label:"Стартап"},
+
+		{
+		data : [214,255,279,],
+		backgroundColor :'#a1203a',
+		borderColor : 'rgba(0,0,0,0)',
+		label:"Копорации"},
+
+		{
+		data : [180,266,311,],
+		backgroundColor :'#3d24a3',
+		borderColor : 'rgba(156,89,182,0)',
+		label:"Частные пользователи"},
+
+]
+	};
+ChartOptions= {
+responsive:false,
+	layout:{padding:{top:12,left:12,bottom:12,},},
+	 scales: {
+	xAxes:[{
+		stacked: true,gridLines:{color:'rgba(0,0,0,0)',borderDash:[],},
+}],
+
+	yAxes:[{
+		stacked: true,gridLines:{color:'rgba(0,0,0,0)',borderDash:[],},
+}],
+ },plugins:{
+datalabels:{display:true,
+	color:'rgba(0,0,0,0)',
+	font:{
+		style:' bold',},},
+},
+legend:{
+	labels:{
+		usePointStyle:true,
+
+		generateLabels: function(chart){
+			 return  chart.data.datasets.map( function( dataset, i ){
+				return{
+					text:dataset.label,
+					lineCap:dataset.borderCapStyle,
+					lineDash:[],
+					lineDashOffset: 0,
+					lineJoin:dataset.borderJoinStyle,
+					pointStyle:'circle',
+					fillStyle:dataset.backgroundColor,
+					strokeStyle:dataset.borderColor,
+					lineWidth:dataset.pointBorderWidth,
+					lineDash:dataset.borderDash,
+				}
+			})
+		},
+
+	},
+},
+
+title:{
+	display:true,
+	text:'Новые пользователи',
+	fontColor:'#3498db',
+	fontSize:32,
+	fontStyle:' bold',
+	},
+elements: {
+	arc: {
+},
+	line: {
+},
+	rectangle: {
+borderWidth:0.01,
+},
+},
+tooltips:{
+},
+hover:{
+	mode:'nearest',
+	animationDuration:400,
+},
+animation:{
+	easing:'easeInQuart',
+	},
+};
+ DrawTheChart(ChartData,ChartOptions,"chart-01","bar");</script></body></html>
